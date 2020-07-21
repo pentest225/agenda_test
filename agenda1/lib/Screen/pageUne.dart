@@ -2,6 +2,7 @@ import './pagedemois.dart';
 import '../Widgets/lesDates.dart';
 import 'package:flutter/material.dart';
 import '../Providers/data.dart';
+import '../Widgets/dayCard.dart';
 
 class PageUne extends StatefulWidget {
   static const routeName = "PageUne";
@@ -13,6 +14,14 @@ class _PageUneState extends State<PageUne> {
   // var myNumber = dateUtility.daysInMonth(7,2020);
   //   var myCalendar = dateUtility.totalLengthOfDays(7,(myNumber- myNumber +1),2020);
   //   var myCalendarStr = dateUtility.day(myCalendar);
+  Widget dayDard(String day,bool isCurrentDay){
+    return Text(
+      "$day.",
+      style: TextStyle(
+        color: isCurrentDay?Colors.blue:Colors.black,
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
@@ -66,48 +75,13 @@ class _PageUneState extends State<PageUne> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(
-                    "Lun.",
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                  Text(
-                    "Mar.",
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                  Text(
-                    "Mer.",
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                  Text(
-                    "Jeu.",
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                  Text(
-                    "Ven.",
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                  Text(
-                    "Sam.",
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                  Text(
-                    "Dim.",
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
+                  dayDard("Lun",true),
+                  dayDard("Mar",false),
+                  dayDard("Mer",false),
+                  dayDard("Jeu",false),
+                  dayDard("Ven",false),
+                  dayDard("Sam",false),
+                  dayDard("Dim",false),
                 ],
               ),
             ),
