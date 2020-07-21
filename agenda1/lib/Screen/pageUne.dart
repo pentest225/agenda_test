@@ -13,13 +13,16 @@ class PageUne extends StatefulWidget {
 
 class _PageUneState extends State<PageUne> {
   final today = DateTime.now();
+  var calendarController = PageController(
+    initialPage: 7
+  );
 
   var dateUtility = DateUtil();
 
-  var myNumber = dateUtility.daysInMonth(7, 2020); // total jours dans le mois
-  var myCalendar = dateUtility.totalLengthOfDays(7, (myNumber - myNumber + 1), 2020);
+  // var myNumber = dateUtility.daysInMonth(7, 2020); // total jours dans le mois
+  // var myCalendar = dateUtility.totalLengthOfDays(7, (myNumber - myNumber + 1), 2020);
   // total jours passe depuis une année arrigine
-  var myCalendarStr = dateUtility.day(myCalendar);
+  // var myCalendarStr = dateUtility.day(myCalendar);
   // Le jour en Strgin
   Widget dayDard(String day, bool isCurrentDay) {
     return Text(
@@ -32,6 +35,14 @@ class _PageUneState extends State<PageUne> {
 
   @override
   Widget build(BuildContext context) {
+    
+    print(today);
+    print("Day week");
+    print(today.weekday);
+    print("Moi");
+    print(today.month);
+    print("Annee");
+    print(today.year);
     final deviceWidth = MediaQuery.of(context).size.width;
     final deviceHeight = MediaQuery.of(context).size.height;
 
@@ -83,23 +94,28 @@ class _PageUneState extends State<PageUne> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  dayDard("Lun", true),
-                  dayDard("Mar", false),
-                  dayDard("Mer", false),
-                  dayDard("Jeu", false),
-                  dayDard("Ven", false),
-                  dayDard("Sam", false),
-                  dayDard("Dim", false),
+                  dayDard("Lun", today.weekday == 1),
+                  dayDard("Mar", today.weekday == 2),
+                  dayDard("Mer", today.weekday == 3),
+                  dayDard("Jeu", today.weekday == 4),
+                  dayDard("Ven", today.weekday == 5),
+                  dayDard("Sam", today.weekday == 6),
+                  dayDard("Dim", today.weekday == 7),
                 ],
               ),
             ),
             Container(
               height: 570,
               child: PageView(
+                controller: calendarController,
+                scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  Lemois(),
-                  Lemois(),
-                  Lemois(),
+                  // Lemois(),
+                  // Lemois(),
+                  // Lemois(),
+                  Center(child: Text("Un")),
+                  Center(child: Text("Deux")),
+                  Center(child: Text("trois")), 
                 ],
               ),
             ),
