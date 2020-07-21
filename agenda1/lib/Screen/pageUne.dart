@@ -13,11 +13,19 @@ class PageUne extends StatefulWidget {
 
 class _PageUneState extends State<PageUne> {
   final today = DateTime.now();
-  var calendarController = PageController(
-    initialPage: 7
-  );
-
+  DateTime dateManger;
+  PageController calendarController ;
+  int _currentPage = 0;
   var dateUtility = DateUtil();
+  @override
+  void initState() {
+    calendarController = PageController(initialPage: today.month -1);
+    _currentPage = today.month - 1;
+    dateManger = DateTime(today.year,today.month,today.day);
+    // TODO: implement initState
+    super.initState();
+  }
+  
 
   // var myNumber = dateUtility.daysInMonth(7, 2020); // total jours dans le mois
   // var myCalendar = dateUtility.totalLengthOfDays(7, (myNumber - myNumber + 1), 2020);
@@ -36,13 +44,13 @@ class _PageUneState extends State<PageUne> {
   @override
   Widget build(BuildContext context) {
     
-    print(today);
-    print("Day week");
-    print(today.weekday);
-    print("Moi");
-    print(today.month);
-    print("Annee");
-    print(today.year);
+    // print(today);
+    // print("Day week");
+    // print(today.weekday);
+    // print("Moi");
+    // print(today.month);
+    // print("Annee");
+    // print(today.year);
     final deviceWidth = MediaQuery.of(context).size.width;
     final deviceHeight = MediaQuery.of(context).size.height;
 
@@ -109,13 +117,33 @@ class _PageUneState extends State<PageUne> {
               child: PageView(
                 controller: calendarController,
                 scrollDirection: Axis.horizontal,
+                onPageChanged: (int page) {
+                  setState(() {
+                    print("old Page $_currentPage");
+                    print("New Page $page");
+                    
+                    _currentPage = page;
+                    print("Page");
+                    print(_currentPage);
+                  });
+                },
+                
                 children: <Widget>[
                   // Lemois(),
                   // Lemois(),
                   // Lemois(),
-                  Center(child: Text("Un")),
-                  Center(child: Text("Deux")),
-                  Center(child: Text("trois")), 
+                  Center(child: Text("Jan")),
+                  Center(child: Text("Fev")),
+                  Center(child: Text("Mars")), 
+                  Center(child: Text("Avril")),
+                  Center(child: Text("Mais")),
+                  Center(child: Text("Jun")), 
+                  Center(child: Text("Juil")),
+                  Center(child: Text("Aout")),
+                  Center(child: Text("Sep")), 
+                  Center(child: Text("Oct")),
+                  Center(child: Text("Nov")),
+                  Center(child: Text("Dec")), 
                 ],
               ),
             ),
