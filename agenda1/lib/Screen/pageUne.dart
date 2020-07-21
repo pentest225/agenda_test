@@ -2,7 +2,6 @@ import './pagedemois.dart';
 import '../Widgets/lesDates.dart';
 import 'package:flutter/material.dart';
 import '../Providers/data.dart';
-import '../Widgets/dayCard.dart';
 import 'package:date_util/date_util.dart';
 
 class PageUne extends StatefulWidget {
@@ -21,7 +20,7 @@ class _PageUneState extends State<PageUne> {
   void initState() {
     calendarController = PageController(initialPage: today.month -1);
     _currentPage = today.month - 1;
-    dateManger = DateTime(today.year,today.month,today.day);
+    dateManger = DateTime(today.year,_currentPage + 1 ,today.day);
     // TODO: implement initState
     super.initState();
   }
@@ -44,13 +43,15 @@ class _PageUneState extends State<PageUne> {
   @override
   Widget build(BuildContext context) {
     
-    // print(today);
-    // print("Day week");
-    // print(today.weekday);
-    // print("Moi");
-    // print(today.month);
-    // print("Annee");
-    // print(today.year);
+    print(today);
+    print("Day week");
+    print(today.weekday);
+    print("Moi");
+    print(today.month);
+    print("Annee");
+    print(today.year);
+    print("String Moi");
+    print(dateUtility.month(dateManger.month));
     final deviceWidth = MediaQuery.of(context).size.width;
     final deviceHeight = MediaQuery.of(context).size.height;
 
@@ -72,7 +73,7 @@ class _PageUneState extends State<PageUne> {
                   Icon(Icons.menu, color: Colors.black, size: 30),
                   SizedBox(width: 20),
                   Text(
-                    "JUI.  ",
+                    "${dateUtility.month(dateManger.month)}.  ",
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 30,
@@ -80,7 +81,7 @@ class _PageUneState extends State<PageUne> {
                   ),
                   Expanded(
                     child: Text(
-                      "2020",
+                      "${dateManger.year}",
                       style: TextStyle(color: Colors.black),
                     ),
                   ),
@@ -121,7 +122,7 @@ class _PageUneState extends State<PageUne> {
                   setState(() {
                     print("old Page $_currentPage");
                     print("New Page $page");
-                    
+                    dateManger = _currentPage < page ? DateTime(today.year,_currentPage+2 ,today.day):DateTime(today.year,_currentPage,today.day);
                     _currentPage = page;
                     print("Page");
                     print(_currentPage);
@@ -129,7 +130,7 @@ class _PageUneState extends State<PageUne> {
                 },
                 
                 children: <Widget>[
-                  // Lemois(),
+                  Lemois(),
                   // Lemois(),
                   // Lemois(),
                   Center(child: Text("Jan")),
