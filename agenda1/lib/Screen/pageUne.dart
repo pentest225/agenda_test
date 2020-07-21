@@ -23,11 +23,12 @@ class _PageUneState extends State<PageUne> {
         width:deviceWidth,
         child: Column(
           children: <Widget>[
+            //App Barre 
             Container(
-              height: deviceHeight * 0.15,
-              color: Colors.red,
+              height: deviceHeight * 0.11,
+              // color: Colors.red,
               padding: EdgeInsets.only(top: 30, left: 20, right: 20),
-              margin: EdgeInsets.only(top: 15),
+              // margin: EdgeInsets.only(top: 15),
               width:deviceWidth ,
               alignment: Alignment.center,
               child: Row(
