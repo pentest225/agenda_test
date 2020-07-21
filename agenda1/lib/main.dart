@@ -63,7 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      
       _counter++;
     });
   }
@@ -101,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '${dateUtility.day}',
+              '${dateUtility.daysInMonth(7,2020)}',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
