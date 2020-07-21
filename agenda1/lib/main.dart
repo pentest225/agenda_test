@@ -1,6 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:time_machine/time_machine.dart';
 
-void main() {
+void main() async {
+  // Call these two functions before `runApp()`.
+  WidgetsFlutterBinding.ensureInitialized();
+  await TimeMachine.initialize({'rootBundle': rootBundle});
+
   runApp(MyApp());
 }
 
