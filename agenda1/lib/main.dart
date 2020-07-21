@@ -69,7 +69,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var myCalendar = dateUtility.getWeek(11,12,1975);
+    var myCalendar = dateUtility.days(721304);
+
     print("myCalandar $myCalendar");
     return Scaffold(
       appBar: AppBar(
