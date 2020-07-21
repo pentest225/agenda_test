@@ -28,6 +28,7 @@ List jourData = [
   {"jour": "25"},
   {"jour": "26"},
   {"jour": "27"},
+  {"jour": "28"},
   {"jour": "29"},
   {"jour": "30"},
   {"jour": "31"},
