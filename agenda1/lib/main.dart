@@ -69,9 +69,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var myCalendar = dateUtility.days(721304);
-
-    print("myCalandar $myCalendar");
+    var myNumber = dateUtility.daysInMonth(7,2020);
+    var myCalendar = dateUtility.totalLengthOfDays(7,(myNumber- myNumber +1),2020);
+    var myCalendarStr = dateUtility.day(myCalendar);
+    
+    print("Nombre de jour dansle mois $myNumber");
+    print("myCalandar $myCalendarStr");
+    print("Le mois Commence un $myCalendarStr");
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
