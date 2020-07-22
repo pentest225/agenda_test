@@ -11,7 +11,7 @@ class Lemois extends StatefulWidget {
 }
 
 class _LemoisState extends State<Lemois> {
-  List<int> myCalendar = [];
+  List<DateTime> myCalendar = [];
   final today = DateTime.now();
   int daysBeforeStart(String day){
     int index = 0;
@@ -43,8 +43,8 @@ class _LemoisState extends State<Lemois> {
     return index;
 
   }
-  List<int> generateAgendat(DateTime myDate){
-    List<int> myCalendar = [];
+  List<DateTime> generateAgendat(DateTime myDate){
+    List<DateTime> myCalendar = [];
     var myDateUtility = DateUtil();
     var nbrDayInMonth = myDateUtility.daysInMonth(myDate.month, myDate.year);
     var nbrDayLastMonth = myDateUtility.daysInMonth(myDate.month - 1, myDate.year);
@@ -57,18 +57,20 @@ class _LemoisState extends State<Lemois> {
     print("The Start Day $startDay");
     print("The End Day $endDay");
 
-    // Creation du debut du calendrier 
+    // Creation du debut du calendrier (les dates du mois precedant)
     for (var i = 0; i < daysBeforeStart(startDay); i++) {
-      myCalendar.insert(0,nbrDayLastMonth - i);
+      DateTime newDate = DateTime(myDate.year,myDate.month -1,nbrDayLastMonth - i);
+      myCalendar.insert(0,newDate);
     }
-    //Contenu du calendrier
+    //Contenu du calendrier (les date du moi courent )
     for (var i = 0; i < nbrDayInMonth; i++) {
-      myCalendar.add(i+1);
+      DateTime newDate = DateTime(myDate.year,myDate.month ,i + 1);
+      myCalendar.add(newDate);
     }
-    //Fin du calendrier 
+    //Fin du calendrier (les dates du moin suivent )
     for (var i = 0; i < ( 42 - (nbrDayInMonth + daysBeforeStart(startDay))) ; i++) {
-     
-      myCalendar.add(i+1);
+     DateTime newDate = DateTime(myDate.year,myDate.month + 1,i + 1);
+      myCalendar.add(newDate);
     }
     // print("Taille du Calendrier ${myCalendar.length}");
     // print("End Calendar Function $myCalendar");
@@ -95,7 +97,8 @@ class _LemoisState extends State<Lemois> {
       
       child: Column(
         children: <Widget>[
-           Padding(
+           Container(
+            //  color: Colors.green,
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -111,15 +114,16 @@ class _LemoisState extends State<Lemois> {
               ),
             ),
           Container(
-            height: deviceHeight * .75,
+            height: deviceHeight * .80,
+            // color: Colors.red,
             child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 1 / 2,
+                  childAspectRatio: 1 / 1.8,
                   crossAxisCount: 7,
                 ),
                 itemBuilder: (context, i) {
                   return LesDates(
-                    day: myCalendar[i].toString(),
+                    day: myCalendar[i],
                   );
                 },
                 itemCount: myCalendar.length),
