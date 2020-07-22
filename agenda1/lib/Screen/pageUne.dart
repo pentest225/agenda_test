@@ -11,6 +11,7 @@ class PageUne extends StatefulWidget {
 }
 
 class _PageUneState extends State<PageUne> {
+  List<Widget> listMois = [];
   final today = DateTime.now();
   DateTime dateManger;
   PageController calendarController ;
@@ -19,8 +20,13 @@ class _PageUneState extends State<PageUne> {
   @override
   void initState() {
     calendarController = PageController(initialPage: today.month -1);
+    int _numberPages = 12;
     _currentPage = today.month - 1;
     dateManger = DateTime(today.year,_currentPage + 1 ,today.day);
+    listMois.insert(0,Lemois(DateTime(today.year,_currentPage,today.day)));
+    listMois.add(Lemois(DateTime(today.year,_currentPage+1,today.day)));
+    listMois.add(Lemois(DateTime(today.year,_currentPage+2,today.day)));
+
     // TODO: implement initState
     super.initState();
   }
@@ -40,6 +46,10 @@ class _PageUneState extends State<PageUne> {
     );
   }
 
+  List<Widget>generateMonthcalendar(){
+    
+
+  }
   @override
   Widget build(BuildContext context) {
     
@@ -123,6 +133,7 @@ class _PageUneState extends State<PageUne> {
                     print("old Page $_currentPage");
                     print("New Page $page");
                     dateManger = _currentPage < page ? DateTime(today.year,_currentPage+2 ,today.day):DateTime(today.year,_currentPage,today.day);
+                    _currentPage < page ? 
                     _currentPage = page;
                     print("Page");
                     print(_currentPage);
@@ -130,21 +141,8 @@ class _PageUneState extends State<PageUne> {
                 },
                 
                 children: <Widget>[
-                  Lemois(),
-                  // Lemois(),
-                  // Lemois(),
-                  Center(child: Text("Jan")),
-                  Center(child: Text("Fev")),
-                  Center(child: Text("Mars")), 
-                  Center(child: Text("Avril")),
-                  Center(child: Text("Mais")),
-                  // Lemois(), 
-                  Center(child: Text("Juil")),
-                  Center(child: Text("Aout")),
-                  Center(child: Text("Sep")), 
-                  Center(child: Text("Oct")),
-                  Center(child: Text("Nov")),
-                  Center(child: Text("Dec")), 
+                  
+                  
                 ],
               ),
             ),
