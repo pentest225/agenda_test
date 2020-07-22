@@ -98,7 +98,7 @@ class _LemoisState extends State<Lemois> {
   
   @override
   Widget build(BuildContext context) {
-    
+    myCalendar = generateAgendat(widget.myMonth);
     
     final deviceWidth = MediaQuery.of(context).size.width;
     final deviceHeight = MediaQuery.of(context).size.height;

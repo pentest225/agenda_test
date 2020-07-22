@@ -23,10 +23,10 @@ class _PageUneState extends State<PageUne> {
     calendarController = PageController(initialPage: 1);
     _currenMonthPage = today.month;
     dateManger = DateTime(today.year, _currenMonthPage);
-    listMois.insert(0, Lemois(DateTime(today.year, _currenMonthPage - 1)));
-    listMois.insert(1,Lemois(DateTime(today.year, _currenMonthPage)));
-    listMois.insert(2,Lemois(DateTime(today.year, _currenMonthPage + 1)));
-
+    listMois.add(Lemois(DateTime(today.year, _currenMonthPage - 1)));
+    listMois.add(Lemois(DateTime(today.year, _currenMonthPage)));
+    listMois.add(Lemois(DateTime(today.year, _currenMonthPage + 1)));
+    print('Taill liste ${listMois.length}');
     // TODO: implement initState
     super.initState();
   }
@@ -108,10 +108,12 @@ class _PageUneState extends State<PageUne> {
                     _currentPage < page
                         ? _currenMonthPage ++
                         : _currenMonthPage --;
+                    _currenMonthPage = _currenMonthPage % 12;
+                    
                     dateManger = DateTime(today.year, _currenMonthPage);//On passe au mois precedent ou suivent en fonction du sens du scroll 
                     
                     _currentPage < page
-                        ? listMois.add(Lemois(dateManger))
+                        ? listMois.add(Lemois(DateTime(today.year, _currenMonthPage+1)))
                         : listMois.insert(1, Lemois(dateManger));
                     print("Current month pAGE $_currenMonthPage");
                     _currentPage = page;
