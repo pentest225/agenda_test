@@ -40,7 +40,8 @@ class _LemoisState extends State<Lemois> {
       default:
         index = 0;
     }
-    return index;
+    print("Nombre de jour avent le debut du moi $index");
+    return index % 7 ;
 
   }
   List<DateTime> generateAgendat(DateTime myDate){
@@ -92,6 +93,7 @@ class _LemoisState extends State<Lemois> {
     myCalendar = generateAgendat(widget.myMonth);
     final deviceWidth = MediaQuery.of(context).size.width;
     final deviceHeight = MediaQuery.of(context).size.height;
+    bool isMonth = widget.myMonth.month == today.month && widget.myMonth.year == today.year;
     return Container(
       height: deviceHeight,
       
@@ -99,17 +101,17 @@ class _LemoisState extends State<Lemois> {
         children: <Widget>[
            Container(
             //  color: Colors.green,
-              padding: const EdgeInsets.symmetric(horizontal: 25),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  dayDard("Lun", today.weekday == 1),
-                  dayDard("Mar", today.weekday == 2),
-                  dayDard("Mer", today.weekday == 3),
-                  dayDard("Jeu", today.weekday == 4),
-                  dayDard("Ven", today.weekday == 5),
-                  dayDard("Sam", today.weekday == 6),
-                  dayDard("Dim", today.weekday == 7),
+                  dayDard("Lun", today.weekday == 1 && isMonth),
+                  dayDard("Mar", today.weekday == 2 && isMonth),
+                  dayDard("Mer", today.weekday == 3 && isMonth),
+                  dayDard("Jeu", today.weekday == 4 && isMonth),
+                  dayDard("Ven", today.weekday == 5 && isMonth),
+                  dayDard("Sam", today.weekday == 6 && isMonth),
+                  dayDard("Dim", today.weekday == 7 && isMonth),
                 ],
               ),
             ),
