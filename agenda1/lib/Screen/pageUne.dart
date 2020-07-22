@@ -14,23 +14,21 @@ class _PageUneState extends State<PageUne> {
   List<Widget> listMois = [];
   final today = DateTime.now();
   DateTime dateManger;
-  PageController calendarController ;
-  int _currentPage = 0;
+  PageController calendarController;
+  int _currenMonthPage = 0;
   var dateUtility = DateUtil();
   @override
   void initState() {
-    calendarController = PageController(initialPage: today.month -1);
-    int _numberPages = 12;
-    _currentPage = today.month - 1;
-    dateManger = DateTime(today.year,_currentPage + 1 ,today.day);
-    listMois.insert(0,Lemois(DateTime(today.year,_currentPage,today.day)));
-    listMois.add(Lemois(DateTime(today.year,_currentPage+1,today.day)));
-    listMois.add(Lemois(DateTime(today.year,_currentPage+2,today.day)));
+    calendarController = PageController(initialPage: 1);
+    _currenMonthPage = today.month;
+    dateManger = DateTime(today.year, _currenMonthPage, today.day);
+    listMois.insert(0, Lemois(DateTime(today.year, _currenMonthPage - 1)));
+    listMois.add(Lemois(DateTime(today.year, today.month)));
+    listMois.add(Lemois(DateTime(today.year, _currenMonthPage + 1)));
 
     // TODO: implement initState
     super.initState();
   }
-  
 
   // var myNumber = dateUtility.daysInMonth(7, 2020); // total jours dans le mois
   // var myCalendar = dateUtility.totalLengthOfDays(7, (myNumber - myNumber + 1), 2020);
@@ -46,14 +44,10 @@ class _PageUneState extends State<PageUne> {
     );
   }
 
-  List<Widget>generateMonthcalendar(){
-    
-
-  }
+  List<Widget> generateMonthcalendar() {}
   @override
   Widget build(BuildContext context) {
-    
-    print(today);
+  
     print("Day week");
     print(today.weekday);
     print("Moi");
@@ -130,20 +124,20 @@ class _PageUneState extends State<PageUne> {
                 scrollDirection: Axis.horizontal,
                 onPageChanged: (int page) {
                   setState(() {
-                    print("old Page $_currentPage");
+                    print("old Page $_currenMonthPage");
                     print("New Page $page");
-                    dateManger = _currentPage < page ? DateTime(today.year,_currentPage+2 ,today.day):DateTime(today.year,_currentPage,today.day);
-                    _currentPage < page ? 
-                    _currentPage = page;
+                    // dateManger = _currenMonthPage < page
+                    //     ? DateTime(today.year, _currenMonthPage + 1, today.day) // On Passe au mois suivent 
+                    //     : DateTime(today.year, _currenMonthPage - 1, today.day);//On passe au mois precedent 
+                    // _currenMonthPage < page
+                    //     ? listMois.add(Lemois(dateManger))
+                    //     : listMois.insert(0, Lemois(dateManger));
+
                     print("Page");
-                    print(_currentPage);
+                    print(_currenMonthPage);
                   });
                 },
-                
-                children: <Widget>[
-                  
-                  
-                ],
+                children: listMois,
               ),
             ),
           ],
