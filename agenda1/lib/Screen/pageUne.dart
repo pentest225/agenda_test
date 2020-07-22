@@ -51,6 +51,9 @@ class _PageUneState extends State<PageUne> {
     final deviceWidth = MediaQuery.of(context).size.width;
     final deviceHeight = MediaQuery.of(context).size.height;
     final appBarHeight = deviceHeight * 0.11;
+    print("@@@@@ ${dateUtility.daysInMonth( DateTime(2020,0).month, 2020)}");
+    print("@@@@@7 ${DateTime(2020,0)}");
+    
 
     return Scaffold(
       body: Container(
@@ -108,10 +111,10 @@ class _PageUneState extends State<PageUne> {
                     _currentPage < page
                         ? _currenMonthPage ++
                         : _currenMonthPage --;
-                    _currenMonthPage = _currenMonthPage % 12;
+                    // _currenMonthPage = _currenMonthPage % 12;
                     
                     dateManger = DateTime(today.year, _currenMonthPage);//On passe au mois precedent ou suivent en fonction du sens du scroll 
-                    
+                    print("@@@@@ 2 ${DateTime(today.year, _currenMonthPage+1)}");
                     _currentPage < page
                         ? listMois.add(Lemois(DateTime(today.year, _currenMonthPage+1)))
                         : listMois.insert(1, Lemois(dateManger));

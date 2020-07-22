@@ -55,8 +55,10 @@ class _LemoisState extends State<Lemois> {
   List<DateTime> generateAgendat(DateTime myDate){
     List<DateTime> myCalendar = [];
     var myDateUtility = DateUtil();
+    print("@@@@@@@@@@@@@3 $myDate");
     var nbrDayInMonth = myDateUtility.daysInMonth(myDate.month, myDate.year);
-    var nbrDayLastMonth = myDateUtility.daysInMonth(myDate.month - 1, myDate.year);
+    DateTime lastMonth = DateTime(myDate.year,myDate.month-1);
+    var nbrDayLastMonth = myDateUtility.daysInMonth(lastMonth.month, lastMonth.year);
     var totalDayFirst = myDateUtility.totalLengthOfDays(myDate.month, (nbrDayInMonth - nbrDayInMonth + 1), myDate.year);
     var totalDayLast = myDateUtility.totalLengthOfDays(myDate.month, nbrDayInMonth, myDate.year);
     String startDay = myDateUtility.day(totalDayFirst);
