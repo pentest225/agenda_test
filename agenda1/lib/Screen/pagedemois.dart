@@ -12,7 +12,7 @@ class Lemois extends StatefulWidget {
 
 class _LemoisState extends State<Lemois> {
   List<int> myCalendar = [];
-  
+  final today = DateTime.now();
   int daysBeforeStart(String day){
     int index = 0;
     switch (day) {
@@ -75,23 +75,56 @@ class _LemoisState extends State<Lemois> {
     return myCalendar;
 
   }
+  Widget dayDard(String day, bool isCurrentDay) {
+    return Text(
+      "$day.",
+      style: TextStyle(
+        color: isCurrentDay ? Colors.blue : Colors.black,
+      ),
+    );
+  }
+
+  
   @override
   Widget build(BuildContext context) {
     myCalendar = generateAgendat(widget.myMonth);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Container(
-        child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: 1 / 2,
-              crossAxisCount: 7,
+    final deviceWidth = MediaQuery.of(context).size.width;
+    final deviceHeight = MediaQuery.of(context).size.height;
+    return Container(
+      height: deviceHeight,
+      
+      child: Column(
+        children: <Widget>[
+           Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  dayDard("Lun", today.weekday == 1),
+                  dayDard("Mar", today.weekday == 2),
+                  dayDard("Mer", today.weekday == 3),
+                  dayDard("Jeu", today.weekday == 4),
+                  dayDard("Ven", today.weekday == 5),
+                  dayDard("Sam", today.weekday == 6),
+                  dayDard("Dim", today.weekday == 7),
+                ],
+              ),
             ),
-            itemBuilder: (context, i) {
-              return LesDates(
-                day: myCalendar[i].toString(),
-              );
-            },
-            itemCount: myCalendar.length),
+          Container(
+            height: deviceHeight * .75,
+            child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 1 / 2,
+                  crossAxisCount: 7,
+                ),
+                itemBuilder: (context, i) {
+                  return LesDates(
+                    day: myCalendar[i].toString(),
+                  );
+                },
+                itemCount: myCalendar.length),
+          ),
+        ],
       ),
     );
   }

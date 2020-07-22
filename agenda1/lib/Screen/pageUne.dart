@@ -36,15 +36,6 @@ class _PageUneState extends State<PageUne> {
   // total jours passe depuis une année arrigine
   // var myCalendarStr = dateUtility.day(myCalendar);
   // Le jour en Strgin
-  Widget dayDard(String day, bool isCurrentDay) {
-    return Text(
-      "$day.",
-      style: TextStyle(
-        color: isCurrentDay ? Colors.blue : Colors.black,
-      ),
-    );
-  }
-
   List<Widget> generateMonthcalendar() {}
   @override
   Widget build(BuildContext context) {
@@ -59,6 +50,7 @@ class _PageUneState extends State<PageUne> {
     print(dateUtility.month(dateManger.month));
     final deviceWidth = MediaQuery.of(context).size.width;
     final deviceHeight = MediaQuery.of(context).size.height;
+    final appBarHeight = deviceHeight * 0.11;
 
     return Scaffold(
       body: Container(
@@ -67,7 +59,7 @@ class _PageUneState extends State<PageUne> {
           children: <Widget>[
             //App Barre
             Container(
-              height: deviceHeight * 0.11,
+              height: appBarHeight,
               // color: Colors.red,
               padding: EdgeInsets.only(top: 30, left: 20, right: 20),
               // margin: EdgeInsets.only(top: 15),
@@ -103,23 +95,8 @@ class _PageUneState extends State<PageUne> {
               ),
             ),
             Divider(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  dayDard("Lun", today.weekday == 1),
-                  dayDard("Mar", today.weekday == 2),
-                  dayDard("Mer", today.weekday == 3),
-                  dayDard("Jeu", today.weekday == 4),
-                  dayDard("Ven", today.weekday == 5),
-                  dayDard("Sam", today.weekday == 6),
-                  dayDard("Dim", today.weekday == 7),
-                ],
-              ),
-            ),
             Container(
-              height: 570,
+              height: deviceHeight - appBarHeight - 20,
               child: PageView(
                 controller: calendarController,
                 scrollDirection: Axis.horizontal,
