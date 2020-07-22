@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:date_util/date_util.dart';
 
 class Lemois extends StatefulWidget {
+  DateTime myMonth;
+  Lemois(this.myMonth);
   @override
   _LemoisState createState() => _LemoisState();
 }
 
 class _LemoisState extends State<Lemois> {
+  List<int> myCalendar = [];
   
   int daysBeforeStart(String day){
     int index = 0;
@@ -40,7 +43,7 @@ class _LemoisState extends State<Lemois> {
     return index;
 
   }
-  void generateAgendat(DateTime myDate){
+  List<int> generateAgendat(DateTime myDate){
     List<int> myCalendar = [];
     var myDateUtility = DateUtil();
     var nbrDayInMonth = myDateUtility.daysInMonth(myDate.month, myDate.year);
@@ -53,14 +56,28 @@ class _LemoisState extends State<Lemois> {
     print("Nombre de jour dans le moi $nbrDayInMonth");
     print("The Start Day $startDay");
     print("The End Day $endDay");
+
+    // Creation du debut du calendrier 
     for (var i = 0; i < daysBeforeStart(startDay); i++) {
-      myCalendar.add(nbrDayLastMonth - )
+      myCalendar.insert(0,nbrDayLastMonth - i);
     }
+    //Contenu du calendrier
+    for (var i = 0; i < nbrDayInMonth; i++) {
+      myCalendar.add(i+1);
+    }
+    //Fin du calendrier 
+    for (var i = 0; i < ( 42 - (nbrDayInMonth + daysBeforeStart(startDay))) ; i++) {
+      print("Troisiemme boucle");
+      myCalendar.add(i+1);
+    }
+    print("Taille du Calendrier ${myCalendar.length}");
+    print("End Calendar Function $myCalendar");
+    return myCalendar;
 
   }
   @override
   Widget build(BuildContext context) {
-    generateAgendat(DateTime.now());
+    myCalendar = generateAgendat(widget.myMonth);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
@@ -71,10 +88,10 @@ class _LemoisState extends State<Lemois> {
             ),
             itemBuilder: (context, i) {
               return LesDates(
-                day: jourData[i]["jour"],
+                day: myCalendar[i].toString(),
               );
             },
-            itemCount: jourData.length),
+            itemCount: myCalendar.length),
       ),
     );
   }
