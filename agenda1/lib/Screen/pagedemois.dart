@@ -53,9 +53,9 @@ class _LemoisState extends State<Lemois> {
     String startDay = myDateUtility.day(totalDayFirst);
     String endDay = myDateUtility.day(totalDayLast);
    
-    // print("Nombre de jour dans le moi $nbrDayInMonth");
-    // print("The Start Day $startDay");
-    // print("The End Day $endDay");
+    print("Nombre de jour dans le moi $nbrDayInMonth");
+    print("The Start Day $startDay");
+    print("The End Day $endDay");
 
     // Creation du debut du calendrier 
     for (var i = 0; i < daysBeforeStart(startDay); i++) {
