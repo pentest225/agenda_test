@@ -7,9 +7,7 @@ class LesDates extends StatelessWidget {
   LesDates({@required this.day});
   @override
   Widget build(BuildContext context) {
-    if(day.day == today.day && day.month == today.month && day.year == today.year){
-      print("#################");
-    }
+   
     bool isToday = day.day == today.day && day.month == today.month && day.year == today.year;
     return InkWell(
       onTap: () {

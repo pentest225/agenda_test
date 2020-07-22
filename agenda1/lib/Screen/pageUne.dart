@@ -22,7 +22,7 @@ class _PageUneState extends State<PageUne> {
   void initState() {
     calendarController = PageController(initialPage: 1);
     _currenMonthPage = today.month;
-    dateManger = DateTime(today.year, _currenMonthPage, today.day);
+    dateManger = DateTime(today.year, _currenMonthPage);
     listMois.insert(0, Lemois(DateTime(today.year, _currenMonthPage - 1)));
     listMois.insert(1,Lemois(DateTime(today.year, _currenMonthPage)));
     listMois.insert(2,Lemois(DateTime(today.year, _currenMonthPage + 1)));
@@ -40,14 +40,14 @@ class _PageUneState extends State<PageUne> {
   @override
   Widget build(BuildContext context) {
 
-    print("Day week");
-    print(today.weekday);
-    print("Moi");
-    print(today.month);
-    print("Annee");
-    print(today.year);
-    print("String Moi");
-    print(dateUtility.month(dateManger.month));
+    // print("Day week");
+    // print(today.weekday);
+    // print("Moi");
+    // print(today.month);
+    // print("Annee");
+    // print(today.year);
+    // print("String Moi");
+    // print(dateUtility.month(dateManger.month));
     final deviceWidth = MediaQuery.of(context).size.width;
     final deviceHeight = MediaQuery.of(context).size.height;
     final appBarHeight = deviceHeight * 0.11;
@@ -102,18 +102,21 @@ class _PageUneState extends State<PageUne> {
                 scrollDirection: Axis.horizontal,
                 onPageChanged: (int page) {
                   setState(() {
-                    print("_currenMonthPage $_currenMonthPage");
+                    // print("_currenMonthPage $_currenMonthPage");
+                    print("Old Page $_currentPage");
                     print("New Page $page");
                     _currentPage < page
                         ? _currenMonthPage ++
                         : _currenMonthPage --;
-                    dateManger = DateTime(today.year, _currenMonthPage, today.day);//On passe au mois precedent ou suivent en fonction du sens du scroll 
+                    dateManger = DateTime(today.year, _currenMonthPage);//On passe au mois precedent ou suivent en fonction du sens du scroll 
+                    
                     _currentPage < page
                         ? listMois.add(Lemois(dateManger))
                         : listMois.insert(1, Lemois(dateManger));
+                    print("Current month pAGE $_currenMonthPage");
                     _currentPage = page;
-                    print("Page");
-                    print(_currenMonthPage);
+                    // print("Page");
+                    // print(_currenMonthPage);
                   });
                 },
                 children: listMois,

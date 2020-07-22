@@ -11,6 +11,14 @@ class Lemois extends StatefulWidget {
 }
 
 class _LemoisState extends State<Lemois> {
+   @override
+  void initState() {
+    print("In the Init State ${widget.myMonth}");
+    // TODO: implement initState
+    super.initState();
+  }
+  
+
   List<DateTime> myCalendar = [];
   final today = DateTime.now();
   int daysBeforeStart(String day){
@@ -40,8 +48,8 @@ class _LemoisState extends State<Lemois> {
       default:
         index = 0;
     }
-    print("Nombre de jour avent le debut du moi $index");
-    return index % 7 ;
+    // print("Nombre de jour avent le debut du moi $index");
+    return index ;
 
   }
   List<DateTime> generateAgendat(DateTime myDate){
@@ -53,7 +61,7 @@ class _LemoisState extends State<Lemois> {
     var totalDayLast = myDateUtility.totalLengthOfDays(myDate.month, nbrDayInMonth, myDate.year);
     String startDay = myDateUtility.day(totalDayFirst);
     String endDay = myDateUtility.day(totalDayLast);
-   
+    
     print("Nombre de jour dans le moi $nbrDayInMonth");
     print("The Start Day $startDay");
     print("The End Day $endDay");
@@ -90,7 +98,8 @@ class _LemoisState extends State<Lemois> {
   
   @override
   Widget build(BuildContext context) {
-    myCalendar = generateAgendat(widget.myMonth);
+    
+    
     final deviceWidth = MediaQuery.of(context).size.width;
     final deviceHeight = MediaQuery.of(context).size.height;
     bool isMonth = widget.myMonth.month == today.month && widget.myMonth.year == today.year;
