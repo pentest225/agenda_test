@@ -16,6 +16,7 @@ class _PageUneState extends State<PageUne> {
   DateTime dateManger;
   PageController calendarController;
   int _currenMonthPage = 0;
+  int _currentPage = 1;
   var dateUtility = DateUtil();
   @override
   void initState() {
@@ -23,8 +24,8 @@ class _PageUneState extends State<PageUne> {
     _currenMonthPage = today.month;
     dateManger = DateTime(today.year, _currenMonthPage, today.day);
     listMois.insert(0, Lemois(DateTime(today.year, _currenMonthPage - 1)));
-    listMois.add(Lemois(DateTime(today.year, today.month)));
-    listMois.add(Lemois(DateTime(today.year, _currenMonthPage + 1)));
+    listMois.insert(1,Lemois(DateTime(today.year, _currenMonthPage)));
+    listMois.insert(2,Lemois(DateTime(today.year, _currenMonthPage + 1)));
 
     // TODO: implement initState
     super.initState();
@@ -47,7 +48,7 @@ class _PageUneState extends State<PageUne> {
   List<Widget> generateMonthcalendar() {}
   @override
   Widget build(BuildContext context) {
-  
+
     print("Day week");
     print(today.weekday);
     print("Moi");
@@ -124,15 +125,16 @@ class _PageUneState extends State<PageUne> {
                 scrollDirection: Axis.horizontal,
                 onPageChanged: (int page) {
                   setState(() {
-                    print("old Page $_currenMonthPage");
+                    print("_currenMonthPage $_currenMonthPage");
                     print("New Page $page");
-                    // dateManger = _currenMonthPage < page
-                    //     ? DateTime(today.year, _currenMonthPage + 1, today.day) // On Passe au mois suivent 
-                    //     : DateTime(today.year, _currenMonthPage - 1, today.day);//On passe au mois precedent 
-                    // _currenMonthPage < page
-                    //     ? listMois.add(Lemois(dateManger))
-                    //     : listMois.insert(0, Lemois(dateManger));
-
+                    _currentPage < page
+                        ? _currenMonthPage ++
+                        : _currenMonthPage --;
+                    dateManger = DateTime(today.year, _currenMonthPage, today.day);//On passe au mois precedent 
+                    _currentPage < page
+                        ? listMois.add(Lemois(dateManger))
+                        : listMois.insert(0, Lemois(dateManger));
+                    _currentPage = page;
                     print("Page");
                     print(_currenMonthPage);
                   });
