@@ -130,9 +130,9 @@ class _PageUneState extends State<PageUne> {
                     _currentPage < page
                         ? _currenMonthPage ++
                         : _currenMonthPage --;
-                    dateManger = DateTime(today.year, _currenMonthPage, today.day);//On passe au mois precedent 
+                    dateManger = DateTime(today.year, _currenMonthPage, today.day);//On passe au mois precedent ou suivent en fonction du sens du scroll 
                     _currentPage < page
-                        ? listMois.add(Lemois(dateManger))
+                        ? listMois.insert(1,Lemois(dateManger))
                         : listMois.insert(0, Lemois(dateManger));
                     _currentPage = page;
                     print("Page");
