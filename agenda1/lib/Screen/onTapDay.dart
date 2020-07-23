@@ -193,6 +193,7 @@ class _DayListeState extends State<DayListe> {
                 ),
                 //End Block One 
                 //Start Block Two 
+                  // 1=> Date Section 
                 Padding(
                   padding: const EdgeInsets.only(left: 20, top: 20),
                   child: Row(
@@ -200,18 +201,17 @@ class _DayListeState extends State<DayListe> {
                       Column(
                         children: <Widget>[
                           Text(
-                            "MERCRE",
+                            "MER",
                             style: TextStyle(
                                 color: Colors.blue,
-                                fontWeight: FontWeight.bold,backgroundColor: Colors.red),
+                                fontWeight: FontWeight.bold),
                           ),
                           Container(
-                            
                             height: 40,
                             width: 40,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              color: Colors.green,
+                              color: Colors.white,
                               border: Border.all(width: 2, color: Colors.blue),
                               borderRadius: BorderRadius.circular(30),
                             ),
@@ -228,6 +228,7 @@ class _DayListeState extends State<DayListe> {
                     ],
                   ),
                 ),
+                    //2=> Time Table Section 
                 Padding(
                   padding: const EdgeInsets.only(left: 70),
                   child: Row(
