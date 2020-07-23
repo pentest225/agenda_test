@@ -1,4 +1,5 @@
 import 'package:agenda1/Widgets/CircleDayDate.dart';
+import 'package:agenda1/Widgets/MyDivider.dart';
 import 'package:agenda1/Widgets/ProgrammeCard.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,7 @@ class DayCard extends StatelessWidget {
           CircleDayDate(),
           Container(
             child: Stack(
+              overflow: Overflow.visible,
               children: <Widget>[
               Column(
                 children: <Widget>[
@@ -25,9 +27,9 @@ class DayCard extends StatelessWidget {
               Positioned(
                 top: 0,
                 bottom: 0,
-                left: 0,
+                left: -12,
                 right: 0,
-                child: Text(""),
+                child: MyDivider(),
               )
             ]),
           ),

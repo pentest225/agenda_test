@@ -54,58 +54,7 @@ class _DayListeState extends State<DayListe> {
             height: MediaQuery.of(context).size.height / 1.17,
             child: ListView(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: Row(
-                    children: <Widget>[
-                      // Circle Number Date End Days name
-                      Column(
-                        children: <Widget>[
-                          Text(
-                            "MAR",
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Container(
-                            height: 40,
-                            width: 40,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Text(
-                              "21",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      SizedBox(width: 10),
-                      // Trait qui montre le tremps actuel
-                      Row(children: <Widget>[
-                        Container(
-                          height: 10,
-                          width: 10,
-                          decoration: BoxDecoration(
-                              color: Colors.green,
-                              borderRadius: BorderRadius.circular(10))),
-                      Expanded(
-                        child: Container(
-                          height: 2,
-                          width: MediaQuery.of(context).size.width,
-                          color: Colors.red,
-                        ),
-                      )
-                      ],)
-                      // Fin du trait
-                    ],
-                  ),
-                ),
+                
                 Padding(
                   padding: const EdgeInsets.only(left: 70),
                   child: Row(
@@ -197,11 +146,11 @@ class _DayListeState extends State<DayListe> {
                   ),
                 ),
                 //End Block One
-                // My Main Container 
+                // My Main Container
                 DayCard(),
                 DayCard(),
                 DayCard(),
-                ],
+              ],
             ),
           )
         ]),
