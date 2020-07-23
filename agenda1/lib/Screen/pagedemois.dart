@@ -52,6 +52,8 @@ class _LemoisState extends State<Lemois> {
     return index ;
 
   }
+  
+  
   List<DateTime> generateAgendat(DateTime myDate){
     List<DateTime> myCalendar = [];
     var myDateUtility = DateUtil();
@@ -88,6 +90,7 @@ class _LemoisState extends State<Lemois> {
     return myCalendar;
 
   }
+  
   Widget dayDard(String day, bool isCurrentDay) {
     return Text(
       "$day.",

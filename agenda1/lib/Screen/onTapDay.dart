@@ -16,7 +16,7 @@ class _DayListeState extends State<DayListe> {
         width: MediaQuery.of(context).size.width,
         child: Column(children: <Widget>[
           Container(
-            color: Colors.red,
+            // color: Colors.red,
             height: deviceHeight * .1,
             padding: EdgeInsets.only(top: 30, left: 20, right: 20),
             width: MediaQuery.of(context).size.width,
@@ -55,6 +55,7 @@ class _DayListeState extends State<DayListe> {
                   padding: const EdgeInsets.only(left: 20),
                   child: Row(
                     children: <Widget>[
+                      // Circle Number Date End Days name 
                       Column(
                         children: <Widget>[
                           Text(
@@ -80,20 +81,23 @@ class _DayListeState extends State<DayListe> {
                           ),
                         ],
                       ),
+                      
                       SizedBox(width: 10),
+                      // Trait qui montre le tremps actuel 
                       Container(
                           height: 10,
                           width: 10,
                           decoration: BoxDecoration(
-                              color: Colors.black,
+                              color: Colors.green,
                               borderRadius: BorderRadius.circular(10))),
                       Expanded(
                         child: Container(
                           height: 2,
                           width: MediaQuery.of(context).size.width,
-                          color: Colors.black,
+                          color: Colors.red,
                         ),
                       )
+                      // Fin du trait 
                     ],
                   ),
                 ),
@@ -121,7 +125,7 @@ class _DayListeState extends State<DayListe> {
                                   Icon(Icons.desktop_windows,
                                       color: Colors.white),
                                   SizedBox(width: 5),
-                                  Text("Apprendre a coder",
+                                  Text("Apprendre a coder 12",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white)),
@@ -187,6 +191,8 @@ class _DayListeState extends State<DayListe> {
                     ],
                   ),
                 ),
+                //End Block One 
+                //Start Block Two 
                 Padding(
                   padding: const EdgeInsets.only(left: 20, top: 20),
                   child: Row(
@@ -194,17 +200,18 @@ class _DayListeState extends State<DayListe> {
                       Column(
                         children: <Widget>[
                           Text(
-                            "MER",
+                            "MERCRE",
                             style: TextStyle(
                                 color: Colors.blue,
-                                fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.bold,backgroundColor: Colors.red),
                           ),
                           Container(
+                            
                             height: 40,
                             width: 40,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.green,
                               border: Border.all(width: 2, color: Colors.blue),
                               borderRadius: BorderRadius.circular(30),
                             ),
