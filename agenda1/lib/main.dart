@@ -54,7 +54,7 @@ class MyAppState extends State<MyApp> {
             RenderAbstractViewport viewport = RenderAbstractViewport.of(renderObject);
             var offsetToRevealBottom = viewport.getOffsetToReveal(renderObject, 1.0);
             var offsetToRevealTop = viewport.getOffsetToReveal(renderObject, 0.0);
-
+            print("@@@@@@@@ OfsetBottom ${}");
             if (offsetToRevealBottom.offset > scroll.metrics.pixels ||
                 scroll.metrics.pixels > offsetToRevealTop.offset) {
               if (fabOpacity != 0.0) {
