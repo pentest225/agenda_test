@@ -13,16 +13,10 @@ class Lemois extends StatefulWidget {
 
 class _LemoisState extends State<Lemois> {
   final myService = CalendarServices();
-   @override
-  void initState() {
-    print("In the Init State ${widget.myMonth}");
-    // TODO: implement initState
-    super.initState();
-  }
+ 
   
   List<DateTime> myCalendar = [];
   final today = DateTime.now();
-  
   
   Widget dayDard(String day, bool isCurrentDay) {
     return Text(
@@ -33,13 +27,12 @@ class _LemoisState extends State<Lemois> {
     );
   }
 
-  
   @override
   Widget build(BuildContext context) {
     myCalendar = myService.generateAgendat(widget.myMonth);
     final deviceWidth = MediaQuery.of(context).size.width;
     final deviceHeight = MediaQuery.of(context).size.height;
-    bool isMonth = widget.myMonth.month == today.month && widget.myMonth.year == today.year;
+    bool isMonth = myService.isToday(widget.myMonth);
     return Container(
       height: deviceHeight,
       

@@ -71,6 +71,12 @@ class CalendarServices {
   }
 
   bool isToday(DateTime myDate){
-    
+    DateTime today = DateTime.now();
+    return today.day == myDate.day && today.month == myDate.month && today.year == myDate.year;
+  }
+
+  bool isMonth(DateTime myDate){
+    DateTime today = DateTime.now();
+    return today.day == myDate.day && today.month == myDate.month ;
   }
 }
