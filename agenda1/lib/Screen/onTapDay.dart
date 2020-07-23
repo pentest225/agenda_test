@@ -3,7 +3,7 @@ import 'package:agenda1/Widgets/ProgrammeCard.dart';
 import 'package:flutter/material.dart';
 import '../Widgets/CircleDayDate.dart';
 import '../Services/CalendarServices.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
+
 
 class DayListe extends StatefulWidget {
   
