@@ -1,4 +1,7 @@
+import 'package:agenda1/Widgets/DayCard.dart';
+import 'package:agenda1/Widgets/ProgrammeCard.dart';
 import 'package:flutter/material.dart';
+import '../Widgets/CircleDayDate.dart';
 
 class DayListe extends StatefulWidget {
   static const routeName = "SingleAgendat";
@@ -55,7 +58,7 @@ class _DayListeState extends State<DayListe> {
                   padding: const EdgeInsets.only(left: 20),
                   child: Row(
                     children: <Widget>[
-                      // Circle Number Date End Days name 
+                      // Circle Number Date End Days name
                       Column(
                         children: <Widget>[
                           Text(
@@ -81,9 +84,9 @@ class _DayListeState extends State<DayListe> {
                           ),
                         ],
                       ),
-                      
+
                       SizedBox(width: 10),
-                      // Trait qui montre le tremps actuel 
+                      // Trait qui montre le tremps actuel
                       Container(
                           height: 10,
                           width: 10,
@@ -97,7 +100,7 @@ class _DayListeState extends State<DayListe> {
                           color: Colors.red,
                         ),
                       )
-                      // Fin du trait 
+                      // Fin du trait
                     ],
                   ),
                 ),
@@ -191,256 +194,12 @@ class _DayListeState extends State<DayListe> {
                     ],
                   ),
                 ),
-                //End Block One 
-                //Start Block Two 
-                  // 1=> Date Section 
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, top: 20),
-                  child: Row(
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Text(
-                            "MER",
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Container(
-                            height: 40,
-                            width: 40,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(width: 2, color: Colors.blue),
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Text(
-                              "22",
-                              style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 10),
-                    ],
-                  ),
-                ),
-                    //2=> Time Table Section 
-                Padding(
-                  padding: const EdgeInsets.only(left: 70),
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        height: 130,
-                        width: MediaQuery.of(context).size.width / 1.3,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(20),
-                          // image: DecorationImage(
-                          //     image: AssetImage("images/propos.jpg"),
-                          //     fit: BoxFit.cover),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10, bottom: 10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Icon(Icons.desktop_windows,
-                                      color: Colors.white),
-                                  SizedBox(width: 5),
-                                  Text("Apprendre a coder",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white)),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Text("09h00 - 13h00",
-                                      style: TextStyle(
-                                          // fontWeight: FontWeight.bold,
-                                          color: Colors.white)),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 70, top: 10),
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        height: 130,
-                        width: MediaQuery.of(context).size.width / 1.3,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(20),
-                          // image: DecorationImage(
-                          //     image: AssetImage("images/propos.jpg"),
-                          //     fit: BoxFit.cover),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10, bottom: 10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Icon(Icons.desktop_windows,
-                                      color: Colors.white),
-                                  SizedBox(width: 5),
-                                  Text("Apprendre a coder",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white)),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Text("09h00 - 13h00",
-                                      style: TextStyle(
-                                          // fontWeight: FontWeight.bold,
-                                          color: Colors.white)),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, top: 20),
-                  child: Row(
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Text(
-                            "MER",
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Container(
-                            height: 40,
-                            width: 40,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Text(
-                              "22",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 10),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 70),
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        height: 130,
-                        width: MediaQuery.of(context).size.width / 1.3,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(20),
-                          // image: DecorationImage(
-                          //     image: AssetImage("images/propos.jpg"),
-                          //     fit: BoxFit.cover),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10, bottom: 10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Icon(Icons.desktop_windows,
-                                      color: Colors.white),
-                                  Text("Apprendre a coder",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white)),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Text("09h00 - 13h00",
-                                      style: TextStyle(
-                                          // fontWeight: FontWeight.bold,
-                                          color: Colors.white)),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 70, top: 10),
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        height: 130,
-                        width: MediaQuery.of(context).size.width / 1.3,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(20),
-                          // image: DecorationImage(
-                          //     image: AssetImage("images/propos.jpg"),
-                          //     fit: BoxFit.cover),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10, bottom: 10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Icon(Icons.desktop_windows,
-                                      color: Colors.white),
-                                  Text("Apprendre a coder",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white)),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Text("09h00 - 13h00",
-                                      style: TextStyle(
-                                          // fontWeight: FontWeight.bold,
-                                          color: Colors.white)),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+                //End Block One
+                // My Main Container 
+                DayCard(),
+                DayCard(),
+                DayCard(),
+                ],
             ),
           )
         ]),
