@@ -1,3 +1,4 @@
+import 'package:agenda1/Screen/onTapDay.dart';
 import 'package:flutter/material.dart';
 
 class LesDates extends StatelessWidget {
@@ -11,7 +12,7 @@ class LesDates extends StatelessWidget {
     bool isToday = day.day == today.day && day.month == today.month && day.year == today.year;
     return InkWell(
       onTap: () {
-        //Navigator.pushNamed(context, "ontapday");
+        Navigator.of(context).pushNamed(DayListe.routeName);
       },
       child: Container(        
         decoration: BoxDecoration(

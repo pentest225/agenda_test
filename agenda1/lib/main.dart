@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       home: PageUne(),
       initialRoute: PageUne.routeName,
       routes: {
-        Today.routeName:(context)=>Today(),
+        DayListe.routeName:(context)=>DayListe(),
         PageUne.routeName:(context)=>PageUne(),
       },
     );

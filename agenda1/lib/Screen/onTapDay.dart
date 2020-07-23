@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 
-class Today extends StatefulWidget {
+class DayListe extends StatefulWidget {
   static const routeName = "SingleAgendat";
   @override
-  _TodayState createState() => _TodayState();
+  _DayListeState createState() => _DayListeState();
 }
 
-class _TodayState extends State<Today> {
+class _DayListeState extends State<DayListe> {
   @override
   Widget build(BuildContext context) {
+    final deviceHeight = MediaQuery.of(context).size.height;
+    final deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
         child: Column(children: <Widget>[
           Container(
-            height: 100,
+            color: Colors.red,
+            height: deviceHeight * .1,
             padding: EdgeInsets.only(top: 30, left: 20, right: 20),
             width: MediaQuery.of(context).size.width,
             alignment: Alignment.center,
