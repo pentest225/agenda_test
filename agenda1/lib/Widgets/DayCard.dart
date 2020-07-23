@@ -12,15 +12,24 @@ class DayCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           CircleDayDate(),
-          Column(
-            children: <Widget>[
-              //Start Block Two
-              // 1=> Date Section
-              //2=> Time Table Section
-              ProgrammeCard(),
-              ProgrammeCard(),
-              ProgrammeCard(),
-            ],
+          Container(
+            child: Stack(
+              children: <Widget>[
+              Column(
+                children: <Widget>[
+                  ProgrammeCard(),
+                  ProgrammeCard(),
+                  ProgrammeCard(),
+                ],
+              ),
+              Positioned(
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Text(""),
+              )
+            ]),
           ),
         ],
       ),

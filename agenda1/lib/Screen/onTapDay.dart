@@ -87,7 +87,8 @@ class _DayListeState extends State<DayListe> {
 
                       SizedBox(width: 10),
                       // Trait qui montre le tremps actuel
-                      Container(
+                      Row(children: <Widget>[
+                        Container(
                           height: 10,
                           width: 10,
                           decoration: BoxDecoration(
@@ -100,6 +101,7 @@ class _DayListeState extends State<DayListe> {
                           color: Colors.red,
                         ),
                       )
+                      ],)
                       // Fin du trait
                     ],
                   ),
