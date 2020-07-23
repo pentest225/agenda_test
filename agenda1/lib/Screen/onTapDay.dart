@@ -2,18 +2,24 @@ import 'package:agenda1/Widgets/DayCard.dart';
 import 'package:agenda1/Widgets/ProgrammeCard.dart';
 import 'package:flutter/material.dart';
 import '../Widgets/CircleDayDate.dart';
+import '../Services/CalendarServices.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class DayListe extends StatefulWidget {
+  
   static const routeName = "SingleAgendat";
   @override
   _DayListeState createState() => _DayListeState();
 }
 
 class _DayListeState extends State<DayListe> {
+  CalendarServices myService = CalendarServices();
+  List<DateTime> allDaysOfMonth = [];
   @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
+    // allDaysOfMonth = myService.generateAgendat();
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
