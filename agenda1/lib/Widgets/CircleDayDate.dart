@@ -14,7 +14,7 @@ class CircleDayDate extends StatelessWidget {
           Column(
             children: <Widget>[
               Text(
-                "${myService.strDay(myDate)}",
+                "${myService.strDay(myDate).substring(0,3).toUpperCase()}",
                 style:
                     TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
               ),
