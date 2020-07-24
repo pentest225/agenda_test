@@ -1,6 +1,7 @@
 import 'package:date_util/date_util.dart';
 
 class CalendarServices {
+  DateUtil myUtilityDate = DateUtil();
   int daysBeforeStart(String day) {
     int index = 0;
     switch (day) {
@@ -78,5 +79,11 @@ class CalendarServices {
   bool isMonth(DateTime myDate){
     DateTime today = DateTime.now();
     return today.day == myDate.day && today.month == myDate.month ;
+  }
+  String strMonth(DateTime myDate){
+    return myUtilityDate.month(myDate.month);
+  }
+  String strDay(DateTime myDate){
+    return myUtilityDate.day(myUtilityDate.totalLengthOfDays(myDate.month, myDate.day, myDate.year));
   }
 }

@@ -19,9 +19,10 @@ class _DayListeState extends State<DayListe> {
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
-    DateTime myParam =   ModalRoute.of(context).settings.arguments;
-    // print("@@@@@@@@@@ MY Param $myParam");
-    // allDaysOfMonth = myService.generateAgendat();
+    Map<String,dynamic> myArg = ModalRoute.of(context).settings.arguments;
+    paramDate = myArg["date"];
+    print('@@@@@@@@@@ MY Param ${paramDate}');
+    allDaysOfMonth = myService.generateAgendat(paramDate);
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -37,7 +38,7 @@ class _DayListeState extends State<DayListe> {
                 Icon(Icons.menu, color: Colors.black, size: 30),
                 SizedBox(width: 20),
                 Text(
-                  "Juillet ",
+                  myService.strMonth(paramDate),
                   style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
                 Icon(
@@ -60,12 +61,11 @@ class _DayListeState extends State<DayListe> {
           Divider(),
           Container(
             height: MediaQuery.of(context).size.height / 1.17,
-            child: ListView(
-              children: <Widget>[
-                DayCard(),
-                DayCard(),
-                DayCard(),
-              ],
+            child: ListView.builder(
+              itemBuilder: (context, int index){
+                return DayCard(allDaysOfMonth[index]);
+              },
+              itemCount: allDaysOfMonth.length,
             ),
           )
         ]),

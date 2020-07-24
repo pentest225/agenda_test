@@ -4,6 +4,8 @@ import 'package:agenda1/Widgets/ProgrammeCard.dart';
 import 'package:flutter/material.dart';
 
 class DayCard extends StatelessWidget {
+  DateTime myDate;
+  DayCard(this.myDate);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,7 +14,7 @@ class DayCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          CircleDayDate(),
+          CircleDayDate(myDate),
           Container(
             child: Stack(
               overflow: Overflow.visible,

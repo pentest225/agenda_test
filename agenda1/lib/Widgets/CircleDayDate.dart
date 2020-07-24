@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import '../Services/CalendarServices.dart';
 
 class CircleDayDate extends StatelessWidget {
+  DateTime myDate;
+  CircleDayDate(this.myDate);
+  CalendarServices myService = CalendarServices();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -10,7 +14,7 @@ class CircleDayDate extends StatelessWidget {
           Column(
             children: <Widget>[
               Text(
-                "MER",
+                "${myService.strDay(myDate)}",
                 style:
                     TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
               ),
@@ -24,7 +28,7 @@ class CircleDayDate extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Text(
-                  "22",
+                  myDate.day.toString(),
                   style: TextStyle(
                       color: Colors.blue, fontWeight: FontWeight.bold),
                 ),
