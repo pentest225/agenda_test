@@ -12,7 +12,7 @@ class LesDates extends StatelessWidget {
     bool isToday = day.day == today.day && day.month == today.month && day.year == today.year;
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(DayListe.routeName);
+        Navigator.of(context).pushNamed(DayListe.routeName,arguments:day);
       },
       child: Container(        
         decoration: BoxDecoration(

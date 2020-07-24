@@ -6,7 +6,6 @@ import '../Services/CalendarServices.dart';
 
 
 class DayListe extends StatefulWidget {
-  
   static const routeName = "SingleAgendat";
   @override
   _DayListeState createState() => _DayListeState();
@@ -15,10 +14,13 @@ class DayListe extends StatefulWidget {
 class _DayListeState extends State<DayListe> {
   CalendarServices myService = CalendarServices();
   List<DateTime> allDaysOfMonth = [];
+  DateTime paramDate ;
   @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
+    DateTime myParam =   ModalRoute.of(context).settings.arguments;
+    // print("@@@@@@@@@@ MY Param $myParam");
     // allDaysOfMonth = myService.generateAgendat();
     return Scaffold(
       body: Container(
