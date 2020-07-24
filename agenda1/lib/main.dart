@@ -2,10 +2,9 @@ import 'package:agenda1/Screen/dayFormat.dart';
 import 'package:agenda1/Screen/monthFormat.dart';
 import 'package:flutter/material.dart';
 import 'package:date_util/date_util.dart';
-import './Screen/pageUne.dart';
+import './Screen/monthFormat.dart';
 import './Screen/onTapDay.dart';
-// import 'package:syncfusion_flutter_calendar/calendar.dart';
-// import 'package:syncfusion_flutter_core/core.dart';
+import './Sydpage/onTapWeek.dart';
 import './DomiPage/domi.dart';
 void main() {
   // SyncfusionLicense.registerLicense(null);
@@ -19,11 +18,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Calendar Demo',
       home: MonthFormat(),
-      initialRoute: PageUne.routeName,
+      initialRoute: MonthFormat.routeName,
       routes: {
         DayListe.routeName:(context)=>DayListe(),
-        PageUne.routeName:(context)=>PageUne(),
-        DayFormat.routeNome:(context)=>DayFormat(),
+        MonthFormat.routeName:(context)=>MonthFormat(),
+        DayFormat.routeName:(context)=>DayFormat(),
+        OnTapWeek.routeName:(context)=>OnTapWeek(),
       },
     );
   }

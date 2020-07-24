@@ -4,7 +4,7 @@ import '../Widgets/myDrawer.dart';
 
 class DayFormat extends StatelessWidget {
   GlobalKey<ScaffoldState> _scafforfdKey = GlobalKey<ScaffoldState>();
-  static const routeNome = "DayFormat";
+  static const routeName = "DayFormat";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

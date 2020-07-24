@@ -1,5 +1,6 @@
 import 'package:agenda1/Screen/dayFormat.dart';
 import 'package:agenda1/Screen/monthFormat.dart';
+import 'package:agenda1/Sydpage/onTapWeek.dart';
 import 'package:flutter/material.dart';
 import '../Screen/monthFormat.dart';
 class MyDrawer extends StatelessWidget {
@@ -74,7 +75,7 @@ class MyDrawer extends StatelessWidget {
                     ],
                   ),
                   InkWell(
-                    onTap: ()=>Navigator.of(context).pushNamed(DayFormat.routeNome),
+                    onTap: ()=>Navigator.of(context).pushNamed(DayFormat.routeName),
                     child: Row(
                       children: <Widget>[
                         IconButton(
@@ -107,6 +108,25 @@ class MyDrawer extends StatelessWidget {
                         "3 Jour",
                       ),
                     ],
+                  ),
+                  InkWell(
+                    onTap: ()=>Navigator.of(context).pushNamed(OnTapWeek.routeName),
+                      child: Row(
+                      children: <Widget>[
+                        IconButton(
+                            icon: Icon(
+                              Icons.border_all,
+                              size: 19,
+                            ),
+                            onPressed: () {}),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Semaine",
+                        ),
+                      ],
+                    ),
                   ),
                   InkWell(
                     onTap: ()=>Navigator.of(context).pushNamed(MonthFormat.routeName),
