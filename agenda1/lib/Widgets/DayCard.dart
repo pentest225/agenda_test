@@ -11,6 +11,8 @@ class DayCard extends StatelessWidget {
   CalendarServices myService = CalendarServices();
   @override
   Widget build(BuildContext context) {
+    final programmeCardHeight = 130.0 + 10;
+    final containerHeight = programmeCardHeight * 3 ;
     return Container(
       margin: EdgeInsets.only(top: 15),
       child: Row(
@@ -19,6 +21,7 @@ class DayCard extends StatelessWidget {
         children: <Widget>[
           CircleDayDate(myDate),
           Container(
+            height: programmeCardHeight * 2 ,
             child: Stack(
               overflow: Overflow.visible,
               children: <Widget>[
@@ -26,12 +29,12 @@ class DayCard extends StatelessWidget {
                 children: <Widget>[
                   ProgrammeCard(),
                   ProgrammeCard(),
-                  ProgrammeCard(),
+                  // ProgrammeCard(),
                 ],
               ),
               if(myService.isToday(myDate))Positioned(
-                top: 0,
-                bottom: 0,
+                top:0,
+                bottom:(DateTime.now().hour * containerHeight )/24,
                 left: -12,
                 right: 0,
                 child: MyDivider(),

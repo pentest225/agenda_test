@@ -78,6 +78,7 @@ class _DayListeState extends State<DayListe> {
                 minItemCount: 0,
                 maxItemCount: allDaysOfMonth.length - 1,
                 itemBuilder: (context, int index) {
+                  print("MyIndex $index");
                   return DayCard(
                     allDaysOfMonth[index],
                   );
@@ -92,32 +93,5 @@ class _DayListeState extends State<DayListe> {
     ));
   }
 
-  Widget button(String text, VoidCallback function) => Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: RawMaterialButton(
-          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          padding: const EdgeInsets.all(10.0),
-          fillColor: Colors.blue,
-          constraints: const BoxConstraints(minWidth: 88.0, minHeight: 30.0),
-          child: Text(text, style: TextStyle(fontSize: 12)),
-          onPressed: function,
-        ),
-      );
-
-  Function itemBuilder() {
-    //
-    final List<double> heights = new List<double>.generate(
-        527, (i) => Random().nextInt(200).toDouble() + 30.0);
-
-    return (BuildContext context, int index) {
-      //
-      return Card(
-        child: Container(
-          height: heights[index % 527],
-          color: (index == 0) ? Colors.red : Colors.green,
-          child: Center(child: Text('ITEM $index')),
-        ),
-      );
-    };
-  }
+  
 }
