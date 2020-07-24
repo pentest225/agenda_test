@@ -1,5 +1,7 @@
+import 'package:agenda1/Screen/dayFormat.dart';
+import 'package:agenda1/Screen/monthFormat.dart';
 import 'package:flutter/material.dart';
-
+import '../Screen/monthFormat.dart';
 class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -71,21 +73,24 @@ class MyDrawer extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Row(
-                    children: <Widget>[
-                      IconButton(
-                          icon: Icon(
-                            Icons.border_bottom,
-                            size: 19,
-                          ),
-                          onPressed: () {}),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Jour",
-                      ),
-                    ],
+                  InkWell(
+                    onTap: ()=>Navigator.of(context).pushNamed(DayFormat.routeNome),
+                    child: Row(
+                      children: <Widget>[
+                        IconButton(
+                            icon: Icon(
+                              Icons.border_bottom,
+                              size: 19,
+                            ),
+                            onPressed: () {}),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Jour",
+                        ),
+                      ],
+                    ),
                   ),
                   Row(
                     children: <Widget>[
@@ -103,21 +108,24 @@ class MyDrawer extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Row(
-                    children: <Widget>[
-                      IconButton(
-                          icon: Icon(
-                            Icons.border_all,
-                            size: 19,
-                          ),
-                          onPressed: () {}),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Mois",
-                      ),
-                    ],
+                  InkWell(
+                    onTap: ()=>Navigator.of(context).pushNamed(MonthFormat.routeName),
+                      child: Row(
+                      children: <Widget>[
+                        IconButton(
+                            icon: Icon(
+                              Icons.border_all,
+                              size: 19,
+                            ),
+                            onPressed: () {}),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Mois",
+                        ),
+                      ],
+                    ),
                   ),
                   Row(
                     children: <Widget>[

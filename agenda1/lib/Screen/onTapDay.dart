@@ -16,7 +16,7 @@ class DayListe extends StatefulWidget {
 
 class _DayListeState extends State<DayListe> {
   static IndexedScrollController controller;
-
+  GlobalKey<ScaffoldState>_scaffoldKey = GlobalKey<ScaffoldState>();
   CalendarServices myService = CalendarServices();
   List<DateTime> allDaysOfMonth = [];
   DateTime paramDate;
@@ -37,6 +37,7 @@ class _DayListeState extends State<DayListe> {
     controller = IndexedScrollController(
         initialIndex: paramDate.day + 1, initialScrollOffset: 30.0);
     return Scaffold(
+      key: _scaffoldKey,
         drawer: MyDrawer(),
         body: Column(
           children: [
@@ -52,7 +53,10 @@ class _DayListeState extends State<DayListe> {
                   alignment: Alignment.center,
                   child: Row(
                     children: <Widget>[
-                      myAppBar(context),
+                      IconButton(
+                    icon: Icon(Icons.menu, color: Colors.black, size: 30),
+                    onPressed: () => _scaffoldKey.currentState.openDrawer(),
+                  ),
                       SizedBox(width: 20),
                       Text(
                         myService.strMonth(paramDate),

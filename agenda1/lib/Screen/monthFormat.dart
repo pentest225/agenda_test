@@ -5,13 +5,14 @@ import '../Providers/data.dart';
 import 'package:date_util/date_util.dart';
 import '../Widgets/myDrawer.dart';
 
-class PageUne extends StatefulWidget {
-  static const routeName = "PageUne";
+class MonthFormat extends StatefulWidget {
+  static const routeName = "MonthFormat";
   @override
-  _PageUneState createState() => _PageUneState();
+  _MonthFormatState createState() => _MonthFormatState();
 }
 
-class _PageUneState extends State<PageUne> {
+class _MonthFormatState extends State<MonthFormat> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List<Widget> listMois = [];
   final today = DateTime.now();
   DateTime dateManger;
@@ -37,13 +38,6 @@ class _PageUneState extends State<PageUne> {
   // total jours passe depuis une année arrigine
   // var myCalendarStr = dateUtility.day(myCalendar);
   // Le jour en Strgin
-  Widget myAppBar(BuildContext context) {
-    print(context);
-    return IconButton(
-      icon: Icon(Icons.menu, color: Colors.black, size: 30),
-      onPressed: () => Scaffold.of(context).openDrawer(),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +54,7 @@ class _PageUneState extends State<PageUne> {
     final appBarHeight = deviceHeight * 0.11;
 
     return Scaffold(
+      key: _scaffoldKey,
       drawer: MyDrawer(),
       body: Container(
         width: deviceWidth,
@@ -75,7 +70,10 @@ class _PageUneState extends State<PageUne> {
               alignment: Alignment.center,
               child: Row(
                 children: <Widget>[
-                  myAppBar(context),
+                  IconButton(
+                    icon: Icon(Icons.menu, color: Colors.black, size: 30),
+                    onPressed: () => _scaffoldKey.currentState.openDrawer(),
+                  ),
                   SizedBox(width: 20),
                   Text(
                     "${dateUtility.month(dateManger.month)}.  ",

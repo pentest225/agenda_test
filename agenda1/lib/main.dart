@@ -1,9 +1,12 @@
+import 'package:agenda1/Screen/dayFormat.dart';
+import 'package:agenda1/Screen/monthFormat.dart';
 import 'package:flutter/material.dart';
 import 'package:date_util/date_util.dart';
 import './Screen/pageUne.dart';
 import './Screen/onTapDay.dart';
 // import 'package:syncfusion_flutter_calendar/calendar.dart';
 // import 'package:syncfusion_flutter_core/core.dart';
+import './DomiPage/domi.dart';
 void main() {
   // SyncfusionLicense.registerLicense(null);
   runApp(MyApp());
@@ -15,11 +18,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Calendar Demo',
-      home: PageUne(),
+      home: MonthFormat(),
       initialRoute: PageUne.routeName,
       routes: {
         DayListe.routeName:(context)=>DayListe(),
         PageUne.routeName:(context)=>PageUne(),
+        DayFormat.routeNome:(context)=>DayFormat(),
       },
     );
   }
