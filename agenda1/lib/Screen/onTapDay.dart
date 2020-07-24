@@ -7,7 +7,6 @@ import '../Widgets/CircleDayDate.dart';
 import '../Services/CalendarServices.dart';
 import 'package:indexed_list_view/indexed_list_view.dart';
 
-
 class DayListe extends StatefulWidget {
   static const routeName = "SingleAgendat";
   @override
@@ -15,94 +14,85 @@ class DayListe extends StatefulWidget {
 }
 
 class _DayListeState extends State<DayListe> {
-  static IndexedScrollController controller = IndexedScrollController(initialIndex: 75);
+  static IndexedScrollController controller;
 
   CalendarServices myService = CalendarServices();
   List<DateTime> allDaysOfMonth = [];
-  DateTime paramDate ;
+  DateTime paramDate;
   @override
   Widget build(BuildContext context) {
-    
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
-    Map<String,dynamic> myArg = ModalRoute.of(context).settings.arguments;
+    Map<String, dynamic> myArg = ModalRoute.of(context).settings.arguments;
     paramDate = myArg["date"];
-    print('@@@@@@@@@@ MY Param ${paramDate}');
+
     allDaysOfMonth = myService.generateAgendat(paramDate);
     controller = IndexedScrollController(
-    initialIndex: paramDate.day,
-    initialScrollOffset : 30.0
-  );
+        initialIndex: paramDate.day + 1, initialScrollOffset: 30.0);
     return Scaffold(
-      body:Column(
-        children: [
-          Expanded(
-            child: IndexedListView.builder(
-              controller: controller,
-              itemBuilder: itemBuilder(),
+        body: Column(
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(children: <Widget>[
+            //AppBar
+            Container(
+              // color: Colors.red,
+              height: deviceHeight * .1,
+              padding: EdgeInsets.only(top: 30, left: 20, right: 20),
+              width: MediaQuery.of(context).size.width,
+              alignment: Alignment.center,
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.menu, color: Colors.black, size: 30),
+                  SizedBox(width: 20),
+                  Text(
+                    myService.strMonth(paramDate),
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                  Icon(
+                    Icons.arrow_drop_down,
+                    color: Colors.black,
+                  ),
+                  Expanded(child: Row()),
+                  IconButton(
+                    icon: Icon(
+                      Icons.calendar_today,
+                      color: Colors.black,
+                    ),
+                    onPressed: () =>
+                        controller.animateToIndex(paramDate.day + 1),
+                  ),
+                  SizedBox(width: 10),
+                  Icon(
+                    Icons.more_vert,
+                    color: Colors.black,
+                  ),
+                ],
+              ),
             ),
-          ),
-          Container(height: 3.0, color: Colors.black),
-          Container(
-            color: Colors.grey[800],
-            child: Column(
-              children: [
-                // ---
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    button("jumpToIndex(-42)", () => controller.jumpToIndex(-42)),
-                    button("jumpToIndex(750000)", () => controller.jumpToIndex(750000)),
-                  ],
-                ),
-                // ---
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    button("animateToIndex(-42)", () => controller.animateToIndex(-42)),
-                    button("animateToIndex(750000)", () => controller.animateToIndex(750000)),
-                  ],
-                ),
-                // ---
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    button("jumpTo(-15)", () => controller.jumpTo(-15)),
-                    button("jumpTo(0)", () => controller.jumpTo(0)),
-                    button("jumpTo(50)", () => controller.jumpTo(50)),
-                  ],
-                ),
-                // ---
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    button("animateTo(-30)", () => controller.animateTo(-30)),
-                    button("animateTo(50)", () => controller.animateTo(50)),
-                  ],
-                ),
-                // ---
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    button("jumpToRelative(-250)", () => controller.jumpToRelative(-250)),
-                    button("jumpToRelative(40)", () => controller.jumpToRelative(40)),
-                  ],
-                ),
-                // ---
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    button("animateToRelative(-250)", () => controller.animateToRelative(-250)),
-                    button("animateToRelative(40)", () => controller.animateToRelative(40)),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ], )
-    );
+            Divider(),
+            Container(
+              height: MediaQuery.of(context).size.height / 1.17,
+              child: IndexedListView.builder(
+                minItemCount: 0,
+                maxItemCount: allDaysOfMonth.length - 1,
+                itemBuilder: (context, int index) {
+                  return DayCard(
+                    allDaysOfMonth[index],
+                  );
+                },
+                controller: controller,
+                
+              ),
+            )
+          ]),
+        ),
+      ],
+    ));
   }
-   Widget button(String text, VoidCallback function) => Padding(
+
+  Widget button(String text, VoidCallback function) => Padding(
         padding: const EdgeInsets.all(4.0),
         child: RawMaterialButton(
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -116,8 +106,8 @@ class _DayListeState extends State<DayListe> {
 
   Function itemBuilder() {
     //
-    final List<double> heights =
-        new List<double>.generate(527, (i) => Random().nextInt(200).toDouble() + 30.0);
+    final List<double> heights = new List<double>.generate(
+        527, (i) => Random().nextInt(200).toDouble() + 30.0);
 
     return (BuildContext context, int index) {
       //
@@ -130,52 +120,4 @@ class _DayListeState extends State<DayListe> {
       );
     };
   }
-
-  // Container(
-  //       width: MediaQuery.of(context).size.width,
-  //       child: Column(children: <Widget>[
-  //         Container(
-  //           // color: Colors.red,
-  //           height: deviceHeight * .1,
-  //           padding: EdgeInsets.only(top: 30, left: 20, right: 20),
-  //           width: MediaQuery.of(context).size.width,
-  //           alignment: Alignment.center,
-  //           child: Row(
-  //             children: <Widget>[
-  //               Icon(Icons.menu, color: Colors.black, size: 30),
-  //               SizedBox(width: 20),
-  //               Text(
-  //                 myService.strMonth(paramDate),
-  //                 style: TextStyle(color: Colors.black, fontSize: 20),
-  //               ),
-  //               Icon(
-  //                 Icons.arrow_drop_down,
-  //                 color: Colors.black,
-  //               ),
-  //               Expanded(child: Row()),
-  //               Icon(
-  //                 Icons.calendar_today,
-  //                 color: Colors.black,
-  //               ),
-  //               SizedBox(width: 10),
-  //               Icon(
-  //                 Icons.more_vert,
-  //                 color: Colors.black,
-  //               ),
-  //             ],
-  //           ),
-  //         ),
-  //         Divider(),
-  //         Container(
-  //           height: MediaQuery.of(context).size.height / 1.17,
-  //           child: IndexedListView.builder(
-  //             itemBuilder: (context, int index){
-  //               return DayCard(allDaysOfMonth[index]);
-  //             },
-  //             controller: controller,
-              
-  //           ),
-  //         )
-  //       ]),
-  //     ),
 }

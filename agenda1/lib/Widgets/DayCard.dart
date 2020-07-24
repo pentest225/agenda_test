@@ -1,3 +1,4 @@
+import 'package:agenda1/Services/CalendarServices.dart';
 import 'package:agenda1/Widgets/CircleDayDate.dart';
 import 'package:agenda1/Widgets/MyDivider.dart';
 import 'package:agenda1/Widgets/ProgrammeCard.dart';
@@ -5,7 +6,9 @@ import 'package:flutter/material.dart';
 
 class DayCard extends StatelessWidget {
   DateTime myDate;
-  DayCard(this.myDate);
+  bool isToday;
+  DayCard(this.myDate,[this.isToday]);
+  CalendarServices myService = CalendarServices();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +29,7 @@ class DayCard extends StatelessWidget {
                   ProgrammeCard(),
                 ],
               ),
-              Positioned(
+              if(myService.isToday(myDate))Positioned(
                 top: 0,
                 bottom: 0,
                 left: -12,
