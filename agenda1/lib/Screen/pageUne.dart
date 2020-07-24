@@ -3,6 +3,7 @@ import '../Widgets/lesDates.dart';
 import 'package:flutter/material.dart';
 import '../Providers/data.dart';
 import 'package:date_util/date_util.dart';
+import '../Widgets/myDrawer.dart';
 
 class PageUne extends StatefulWidget {
   static const routeName = "PageUne";
@@ -36,10 +37,16 @@ class _PageUneState extends State<PageUne> {
   // total jours passe depuis une année arrigine
   // var myCalendarStr = dateUtility.day(myCalendar);
   // Le jour en Strgin
-  List<Widget> generateMonthcalendar() {}
+  Widget myAppBar(BuildContext context) {
+    print(context);
+    return IconButton(
+      icon: Icon(Icons.menu, color: Colors.black, size: 30),
+      onPressed: () => Scaffold.of(context).openDrawer(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-
     // print("Day week");
     // print(today.weekday);
     // print("Moi");
@@ -52,8 +59,8 @@ class _PageUneState extends State<PageUne> {
     final deviceHeight = MediaQuery.of(context).size.height;
     final appBarHeight = deviceHeight * 0.11;
 
-
     return Scaffold(
+      drawer: MyDrawer(),
       body: Container(
         width: deviceWidth,
         child: Column(
@@ -68,7 +75,7 @@ class _PageUneState extends State<PageUne> {
               alignment: Alignment.center,
               child: Row(
                 children: <Widget>[
-                  Icon(Icons.menu, color: Colors.black, size: 30),
+                  myAppBar(context),
                   SizedBox(width: 20),
                   Text(
                     "${dateUtility.month(dateManger.month)}.  ",
@@ -91,7 +98,6 @@ class _PageUneState extends State<PageUne> {
                   Icon(
                     Icons.more_vert,
                     color: Colors.black,
-                    
                   ),
                 ],
               ),
@@ -106,12 +112,14 @@ class _PageUneState extends State<PageUne> {
                   setState(() {
                     // print("_currenMonthPage $_currenMonthPage");
                     _currentPage < page
-                        ? _currenMonthPage ++
-                        : _currenMonthPage --;
+                        ? _currenMonthPage++
+                        : _currenMonthPage--;
                     // _currenMonthPage = _currenMonthPage % 12;
-                    dateManger = DateTime(today.year, _currenMonthPage);//On passe au mois precedent ou suivent en fonction du sens du scroll 
+                    dateManger = DateTime(today.year,
+                        _currenMonthPage); //On passe au mois precedent ou suivent en fonction du sens du scroll
                     _currentPage < page
-                        ? listMois.add(Lemois(DateTime(today.year, _currenMonthPage+1)))
+                        ? listMois.add(
+                            Lemois(DateTime(today.year, _currenMonthPage + 1)))
                         : listMois.insert(1, Lemois(dateManger));
                     _currentPage = page;
                     // print("Page");
