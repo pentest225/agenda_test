@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:date_util/date_util.dart';
 import './Screen/pageUne.dart';
 import './Screen/onTapDay.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:syncfusion_flutter_core/core.dart';
+// import 'package:syncfusion_flutter_calendar/calendar.dart';
+// import 'package:syncfusion_flutter_core/core.dart';
 void main() {
-  SyncfusionLicense.registerLicense(null);
+  // SyncfusionLicense.registerLicense(null);
   runApp(MyApp());
 }
 
