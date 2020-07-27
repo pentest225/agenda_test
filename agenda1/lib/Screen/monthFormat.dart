@@ -41,14 +41,7 @@ class _MonthFormatState extends State<MonthFormat> {
 
   @override
   Widget build(BuildContext context) {
-    // print("Day week");
-    // print(today.weekday);
-    // print("Moi");
-    // print(today.month);
-    // print("Annee");
-    // print(today.year);
-    // print("String Moi");
-    // print(dateUtility.month(dateManger.month));
+    print(DateTime.now().add(Duration(days: 1,hours: 5)));
     final deviceWidth = MediaQuery.of(context).size.width;
     final deviceHeight = MediaQuery.of(context).size.height;
     final appBarHeight = deviceHeight * 0.11;
